@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRESCENTA 2026</title>
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
+  <meta name="description" content="Official Website of CRESCENTA 2026 – Empowering Scientific Innovation and Technology">
+  <meta name="keywords" content="CRESCENTA, Competition, Science, Technology, MAN 1 Surakarta">
+  <meta property="og:title" content="CRESCENTA 2026">
+  <meta property="og:description" content="Empowering Scientific Innovation and Technology">
+  <meta name="theme-color" content="#080b18">
+  
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+
+  <!-- Link to External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- =========== PRELOADER =========== -->
+<div id="preloader" role="status" aria-label="Loading CRESCENTA 2026">
+  <div class="arcade-loader">
+    <div class="pacman-loader"></div>
+    <div class="dots-wrapper">
+      <div class="pac-dot"></div>
+      <div class="pac-dot"></div>
+      <div class="pac-dot"></div>
+      <div class="pac-dot"></div>
+    </div>
+  </div>
+  <div class="loader-text">LOADING...</div>
+</div>
+
+<!-- CRT & AMBIENT OVERLAYS -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep-line" aria-hidden="true"></div>
+
+<!-- PIXEL CORNER BRACKETS -->
+<div class="px-corner tl" aria-hidden="true"></div>
+<div class="px-corner tr" aria-hidden="true"></div>
+<div class="px-corner bl" aria-hidden="true"></div>
+<div class="px-corner br" aria-hidden="true"></div>
+
+<!-- AMBIENT RETRO SCOREBOARD -->
+<div class="retro-scoreboard" aria-hidden="true">
+  HI-SCORE<br>9 9 9 9 9 9<br><br>SCORE<br>0 0 4 5 0 0<br><br>LEVEL 14<br><br>&#9829; &#9829; &#9829;
+</div>
+
+<!-- STARS & CYBER-GRID LAYER -->
+<div id="stars-layer" aria-hidden="true">
+  <div class="cyber-grid"></div>
+  <div class="bg-arcade" style="position:absolute;inset:0;pointer-events:none;z-index:0;">
+
+    <!-- Moving Pac-Man -->
+    <div class="bg-pac-row" style="position:absolute;left:0;right:0;bottom:18vh;height:40px;overflow:hidden;">
+      <div class="pacman" style="width:0;height:0;border:20px solid var(--gold);border-right-color:transparent;border-radius:50%;position:absolute;top:6px;left:-40px;z-index:2;animation:chomp 0.28s infinite alternate, movePac 10s linear infinite;"></div>
+      <div class="dots-wrapper" style="position:absolute;top:14px;left:40px;right:0;display:flex;gap:22px;align-items:center;justify-content:flex-start;">
+        <div class="pac-dot" style="width:8px;height:8px;animation:hideDot 10s linear infinite;animation-delay:0.4s;"></div>
+        <div class="pac-dot" style="width:8px;height:8px;animation:hideDot 10s linear infinite;animation-delay:1.0s;"></div>
+        <div class="pac-dot" style="width:8px;height:8px;animation:hideDot 10s linear infinite;animation-delay:1.6s;"></div>
+        <div class="pac-dot" style="width:8px;height:8px;animation:hideDot 10s linear infinite;animation-delay:2.2s;"></div>
+        <div class="pac-dot" style="width:8px;height:8px;animation:hideDot 10s linear infinite;animation-delay:2.8s;"></div>
+      </div>
+    </div>
+
+    <!-- Ghosts -->
+    <div class="ghost-sprite" style="left:18%;bottom:26vh;width:46px;height:46px;background:radial-gradient(circle at 35% 30%,#a855f7 25%,#7c3aed 26%);border-radius:50% 50% 10% 10%/60% 60% 40% 40%;opacity:0.25;"></div>
+    <div class="ghost-sprite" style="left:52%;bottom:30vh;width:46px;height:46px;background:radial-gradient(circle at 35% 30%,#c77dff 25%,#a855f7 26%);border-radius:50% 50% 10% 10%/60% 60% 40% 40%;opacity:0.18;animation-duration:4.2s;"></div>
+    <div class="ghost-sprite" style="left:78%;bottom:24vh;width:46px;height:46px;background:radial-gradient(circle at 35% 30%,#e879f9 25%,#c77dff 26%);border-radius:50% 50% 10% 10%/60% 60% 40% 40%;opacity:0.15;animation-duration:3.8s;"></div>
+
+    <!-- Purple Arcade Characters -->
+    <!-- 1. Purple Wizard -->
+    <div class="wizard-char" style="left:8%;top:15%;width:64px;height:80px;">
+      <svg viewBox="0 0 16 20" style="width:100%;height:100%;image-rendering:pixelated;" aria-hidden="true">
+        <rect x="5" y="1" width="6" height="2" fill="#a855f7"/><rect x="3" y="3" width="10" height="2" fill="#9333ea"/><rect x="2" y="5" width="12" height="2" fill="#7c3aed"/>
+        <rect x="4" y="7" width="8" height="5" fill="#c4b5fd"/>
+        <rect x="5" y="8" width="2" height="2" fill="#1e1b4b"/><rect x="9" y="8" width="2" height="2" fill="#1e1b4b"/>
+        <rect x="6" y="8" width="1" height="1" fill="#fff"/><rect x="10" y="8" width="1" height="1" fill="#fff"/>
+        <rect x="5" y="12" width="6" height="1" fill="#ddd6fe"/><rect x="6" y="13" width="4" height="1" fill="#c4b5fd"/><rect x="7" y="14" width="2" height="1" fill="#a78bfa"/>
+        <rect x="3" y="15" width="10" height="5" fill="#581c87"/><rect x="4" y="15" width="2" height="5" fill="#7c3aed"/><rect x="10" y="15" width="2" height="5" fill="#7c3aed"/>
+        <rect x="14" y="6" width="1" height="12" fill="#92400e"/>
+        <rect x="13" y="4" width="3" height="3" fill="#a855f7" class="sparkle"/><rect x="14" y="3" width="1" height="1" fill="#e879f9" class="sparkle"/>
+        <rect x="1" y="10" width="1" height="1" fill="#e879f9" class="sparkle" style="animation-delay:0.3s"/><rect x="0" y="14" width="1" height="1" fill="#c77dff" class="sparkle" style="animation-delay:0.6s"/>
+      </svg>
+    </div>
+
+    <!-- 2. Purple Dragon -->
+    <div class="dragon-char" style="right:10%;top:20%;width:72px;height:56px;">
+      <svg viewBox="0 0 18 14" style="width:100%;height:100%;image-rendering:pixelated;" aria-hidden="true">
+        <rect x="4" y="4" width="10" height="8" fill="#7c3aed"/><rect x="5" y="5" width="8" height="6" fill="#8b5cf6"/>
+        <rect x="1" y="2" width="6" height="5" fill="#6d28d9"/><rect x="2" y="3" width="4" height="3" fill="#8b5cf6"/>
+        <rect x="2" y="3" width="2" height="2" fill="#1e1b4b"/><rect x="2" y="3" width="1" height="1" fill="#fff"/>
+        <rect x="2" y="0" width="1" height="2" fill="#a855f7"/><rect x="5" y="0" width="1" height="2" fill="#a855f7"/>
+        <rect x="0" y="5" width="4" height="4" fill="#9333ea"/><rect x="1" y="6" width="2" height="2" fill="#a855f7"/>
+        <rect x="12" y="5" width="4" height="4" fill="#9333ea"/><rect x="13" y="6" width="2" height="2" fill="#a855f7"/>
+        <rect x="14" y="6" width="3" height="2" fill="#6d28d9"/><rect x="16" y="5" width="2" height="2" fill="#a855f7"/>
+        <rect x="-2" y="4" width="2" height="1" fill="#f472b6" class="fire-breath"/><rect x="-3" y="3" width="1" height="2" fill="#e879f9" class="fire-breath" style="animation-delay:0.3s"/>
+        <rect x="6" y="3" width="1" height="1" fill="#c77dff"/><rect x="9" y="3" width="1" height="1" fill="#c77dff"/><rect x="12" y="3" width="1" height="1" fill="#c77dff"/>
+      </svg>
+    </div>
+
+    <!-- 3. Arcade Bot -->
+    <div class="arcade-bot" style="left:35%;top:8%;width:52px;height:64px;">
+      <svg viewBox="0 0 13 16" style="width:100%;height:100%;image-rendering:pixelated;" aria-hidden="true">
+        <rect x="6" y="0" width="1" height="3" fill="#a78bfa"/><rect x="5" y="0" width="3" height="1" fill="#e879f9"/>
+        <rect x="2" y="3" width="9" height="6" fill="#581c87" stroke="#7c3aed" stroke-width="0.5"/><rect x="3" y="4" width="7" height="4" fill="#4c1d95"/>
+        <rect x="4" y="5" width="2" height="2" fill="#a855f7" class="bot-eye"/><rect x="7" y="5" width="2" height="2" fill="#a855f7" class="bot-eye"/>
+        <rect x="4.5" y="5.5" width="1" height="1" fill="#fff"/><rect x="7.5" y="5.5" width="1" height="1" fill="#fff"/>
+        <rect x="3" y="9" width="7" height="5" fill="#6d28d9"/><rect x="4" y="10" width="5" height="3" fill="#5b21b6"/>
+        <rect x="5" y="11" width="3" height="2" fill="#1e1b4b"/><rect x="6" y="11.5" width="1" height="1" fill="#a855f7" class="bot-eye" style="animation-delay:0.5s"/>
+        <rect x="1" y="10" width="2" height="3" fill="#7c3aed"/><rect x="10" y="10" width="2" height="3" fill="#7c3aed"/>
+        <rect x="4" y="14" width="2" height="2" fill="#8b5cf6"/><rect x="7" y="14" width="2" height="2" fill="#8b5cf6"/>
+      </svg>
+    </div>
+
+    <!-- 4. Crystal -->
+    <div class="crystal-char" style="right:25%;top:12%;width:36px;height:44px;">
+      <svg viewBox="0 0 9 11" style="width:100%;height:100%;image-rendering:pixelated;" aria-hidden="true">
+        <rect x="3" y="0" width="3" height="1" fill="#e879f9"/><rect x="2" y="1" width="5" height="1" fill="#c77dff"/>
+        <rect x="1" y="2" width="7" height="4" fill="#a855f7"/><rect x="2" y="3" width="5" height="3" fill="#9333ea"/>
+        <rect x="2" y="2" width="2" height="2" fill="#c4b5fd"/>
+        <rect x="1" y="6" width="7" height="3" fill="#7c3aed"/><rect x="2" y="6" width="5" height="3" fill="#6d28d9"/>
+        <rect x="3" y="9" width="3" height="1" fill="#581c87"/><rect x="4" y="10" width="1" height="1" fill="#4c1d95"/>
+        <rect x="0" y="1" width="1" height="1" fill="#fff" opacity="0.6"/><rect x="8" y="4" width="1" height="1" fill="#fff" opacity="0.4"/>
+      </svg>
+    </div>
+
+    <!-- 5. Energy Orb -->
+    <div class="energy-orb" style="left:22%;top:35%;width:40px;height:40px;">
+      <svg viewBox="0 0 10 10" style="width:100%;height:100%;" aria-hidden="true">
+        <defs>
+          <radialGradient id="orbGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#e879f9" stop-opacity="1"/>
+            <stop offset="40%" stop-color="#a855f7" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="5" cy="5" r="5" fill="url(#orbGlow)" class="orb-core"/>
+        <circle cx="5" cy="5" r="2.5" fill="#f0abfc" opacity="0.8">
+          <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="1" cy="5" r="0.6" fill="#c77dff" opacity="0.8">
+          <animateTransform attributeName="transform" type="rotate" from="0 5 5" to="360 5 5" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="9" cy="5" r="0.5" fill="#e879f9" opacity="0.6">
+          <animateTransform attributeName="transform" type="rotate" from="180 5 5" to="540 5 5" dur="2.5s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+
+    <!-- 6. Rocket -->
+    <div class="rocket-char" style="right:35%;top:5%;width:48px;height:56px;">
+      <svg viewBox="0 0 12 14" style="width:100%;height:100%;image-rendering:pixelated;" aria-hidden="true">
+        <rect x="4" y="1" width="4" height="8" fill="#e879f9"/><rect x="5" y="2" width="2" height="6" fill="#f0abfc"/>
+        <rect x="4" y="0" width="4" height="1" fill="#c77dff"/><rect x="5" y="0" width="2" height="1" fill="#e879f9"/>
+        <rect x="2" y="7" width="2" height="3" fill="#a855f7"/><rect x="8" y="7" width="2" height="3" fill="#a855f7"/>
+        <rect x="1" y="8" width="1" height="2" fill="#9333ea"/><rect x="10" y="8" width="1" height="2" fill="#9333ea"/>
+        <rect x="5" y="3" width="2" height="2" fill="#1e1b4b"/><rect x="5.5" y="3.5" width="1" height="1" fill="#60a5fa"/>
+        <rect x="5" y="9" width="2" height="2" fill="#c084fc" class="rocket-flame"/>
+        <rect x="4" y="10" width="1" height="2" fill="#a855f7" class="rocket-flame" style="animation-delay:0.1s"/>
+        <rect x="7" y="10" width="1" height="2" fill="#a855f7" class="rocket-flame" style="animation-delay:0.15s"/>
+        <rect x="5" y="11" width="2" height="2" fill="#e879f9" class="rocket-flame" style="animation-delay:0.05s"/>
+      </svg>
+    </div>
+
+    <!-- 7. Pixel Heart -->
+    <div class="wizard-char" style="left:60%;top:18%;width:32px;height:28px;animation-duration:4s;">
+      <svg viewBox="0 0 8 7" style="width:100%;height:100%;image-rendering:pixelated;" aria-hidden="true">
+        <rect x="1" y="1" width="1" height="1" fill="#e879f9"/><rect x="2" y="0" width="2" height="1" fill="#a855f7"/>
+        <rect x="5" y="1" width="1" height="1" fill="#e879f9"/><rect x="6" y="0" width="2" height="1" fill="#a855f7"/>
+        <rect x="0" y="2" width="8" height="1" fill="#9333ea"/><rect x="0" y="3" width="8" height="1" fill="#7c3aed"/>
+        <rect x="1" y="4" width="6" height="1" fill="#7c3aed"/><rect x="2" y="5" width="4" height="1" fill="#6d28d9"/><rect x="3" y="6" width="2" height="1" fill="#581c87"/>
+      </svg>
+    </div>
+
+    <!-- 8. Purple Star -->
+    <div class="crystal-char" style="left:75%;top:8%;width:28px;height:28px;animation-duration:6s;">
+      <svg viewBox="0 0 7 7" style="width:100%;height:100%;image-rendering:pixelated;" aria-hidden="true">
+        <rect x="3" y="0" width="1" height="7" fill="#e879f9"/><rect x="0" y="3" width="7" height="1" fill="#e879f9"/>
+        <rect x="1" y="1" width="1" height="1" fill="#c77dff"/><rect x="5" y="1" width="1" height="1" fill="#c77dff"/>
+        <rect x="1" y="5" width="1" height="1" fill="#c77dff"/><rect x="5" y="5" width="1" height="1" fill="#c77dff"/>
+        <rect x="2" y="2" width="3" height="3" fill="#a855f7"/>
+        <rect x="3" y="2" width="1" height="3" fill="#f0abfc"/><rect x="2" y="3" width="3" height="1" fill="#f0abfc"/>
+      </svg>
+    </div>
+
+    <!-- Space Invader -->
+    <div class="invader-sprite" style="left:12%;top:10%;width:48px;height:24px;opacity:0.12;" aria-hidden="true">
+      <svg width="48" height="24" viewBox="0 0 24 12" style="width:100%;height:100%;image-rendering:pixelated;">
+        <rect x="2" y="2" width="2" height="2" fill="#a855f7"/><rect x="4" y="2" width="2" height="2" fill="#a855f7"/>
+        <rect x="6" y="2" width="2" height="2" fill="#a855f7"/><rect x="8" y="2" width="2" height="2" fill="#a855f7"/>
+        <rect x="3" y="4" width="2" height="2" fill="#a855f7"/><rect x="5" y="4" width="2" height="2" fill="#a855f7"/><rect x="7" y="4" width="2" height="2" fill="#a855f7"/>
+      </svg>
+    </div>
+
+    <!-- UFO -->
+    <div class="ufo-sprite" style="top:6%;left:-10%;width:84px;height:36px;opacity:0.12;pointer-events:none;z-index:1;animation:movePac 28s linear infinite;" aria-hidden="true">
+      <svg viewBox="0 0 84 36" style="width:100%;height:100%;image-rendering:pixelated;">
+        <ellipse cx="42" cy="18" rx="34" ry="10" fill="#a855f7" opacity="0.9"/>
+        <ellipse cx="42" cy="14" rx="18" ry="6" fill="#0a0c1e"/>
+        <circle cx="42" cy="14" r="3" fill="#e879f9"/>
+      </svg>
+    </div>
+
+    <!-- Arcade Cabinet -->
+    <div class="cabinet-sprite" style="position:absolute;left:6%;bottom:8vh;width:76px;height:110px;opacity:0.1;pointer-events:none;z-index:1;" aria-hidden="true">
+      <svg viewBox="0 0 76 110" style="width:100%;height:100%;image-rendering:pixelated;">
+        <rect x="4" y="4" width="68" height="102" fill="#0a0c1e" stroke="#7c3aed" stroke-width="3"/>
+        <rect x="12" y="14" width="52" height="36" fill="#a855f7" opacity="0.2"/>
+        <circle cx="28" cy="64" r="6" fill="#a855f7"/>
+        <rect x="44" y="58" width="8" height="8" fill="#e879f9"/>
+      </svg>
+    </div>
+
+    <!-- Coins -->
+    <div class="coin-sprite" style="position:absolute;right:18%;top:12vh;width:18px;height:18px;color:var(--purple-bright);font-family:'Press Start 2P';font-size:14px;opacity:0.22;pointer-events:none;display:flex;align-items:center;justify-content:center;animation:float-icon 2.4s ease-in-out infinite alternate;" aria-hidden="true">$</div>
+    <div class="coin-sprite" style="position:absolute;right:24%;top:18vh;width:14px;height:14px;color:var(--purple);font-family:'Press Start 2P';font-size:12px;opacity:0.18;pointer-events:none;display:flex;align-items:center;justify-content:center;animation:coin-pulse 3.6s ease-in-out infinite;" aria-hidden="true">&#9830;</div>
+    <div class="coin-sprite" style="position:absolute;right:30%;top:10vh;width:16px;height:16px;color:#e879f9;font-family:'Press Start 2P';font-size:13px;opacity:0.15;pointer-events:none;display:flex;align-items:center;justify-content:center;animation:float-icon 3s ease-in-out infinite alternate;animation-delay:0.5s;" aria-hidden="true">&#9733;</div>
+
+    <!-- Power pellets -->
+    <div style="position:absolute;left:38%;bottom:20vh;width:12px;height:12px;border-radius:50%;background:var(--purple-bright);box-shadow:0 0 12px var(--purple-bright),0 0 24px var(--purple);opacity:0.9;pointer-events:none;animation:blink 2s linear infinite;" aria-hidden="true"></div>
+    <div style="position:absolute;right:45%;bottom:22vh;width:10px;height:10px;border-radius:50%;background:#e879f9;box-shadow:0 0 10px #e879f9,0 0 20px #c77dff;opacity:0.8;pointer-events:none;animation:blink 1.5s linear infinite;animation-delay:0.5s;" aria-hidden="true"></div>
+
+    <!-- Neon streaks -->
+    <div class="neon-streak" style="top:25vh;left:5%;width:40%;background:linear-gradient(90deg,transparent,rgba(168,85,247,0.18),transparent);animation-duration:6s;" aria-hidden="true"></div>
+    <div class="neon-streak" style="top:45vh;left:20%;width:25%;background:linear-gradient(90deg,transparent,rgba(232,121,249,0.14),transparent);animation-duration:7s;animation-delay:1.2s;" aria-hidden="true"></div>
+    <div class="neon-streak" style="top:60vh;left:55%;width:30%;background:linear-gradient(90deg,transparent,rgba(147,51,234,0.12),transparent);animation-duration:5.6s;animation-delay:0.6s;" aria-hidden="true"></div>
+    <div class="neon-streak" style="top:35vh;left:70%;width:20%;background:linear-gradient(90deg,transparent,rgba(199,125,255,0.16),transparent);animation-duration:8s;animation-delay:2s;" aria-hidden="true"></div>
+
+    <!-- Particle containers (filled by JS) -->
+    <div id="purple-particles" style="position:absolute;inset:0;pointer-events:none;z-index:0;" aria-hidden="true"></div>
+    <div id="pixel-rain" style="position:absolute;inset:0;pointer-events:none;z-index:0;" aria-hidden="true"></div>
+
+    <!-- Ambient texts -->
+    <div class="ambient-text" style="top:10vh;left:6%;color:rgba(168,85,247,0.08);font-size:0.9rem;" aria-hidden="true">INSERT COIN</div>
+    <div class="ambient-text" style="top:28vh;right:8%;color:rgba(232,121,249,0.06);font-size:0.7rem;animation-delay:1s;" aria-hidden="true">PLAYER 1</div>
+    <div class="ambient-text" style="top:50vh;left:3%;color:rgba(147,51,234,0.07);font-size:0.5rem;animation-delay:2s;" aria-hidden="true">POWER UP</div>
+  </div>
+</div>
+
+<nav id="navbar" role="navigation" aria-label="Navigasi Utama">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="CRESCENTA 2026 – Kembali ke atas">
+      <img src="assets/logo.webp" alt="Logo CRESCENTA 2026" width="42" height="42" onerror="this.style.display='none'">
+      <span>CRESCENTA 2026</span>
+    </a>
+    <div class="nav-links" role="list">
+      <button onclick="scrollToId('hero')" role="listitem">Home</button>
+      <button onclick="scrollToId('about')" role="listitem">About</button>
+      <button onclick="scrollToId('mascot')" role="listitem">Mascot</button>
+      <button onclick="scrollToId('competition')" role="listitem">Competition</button>
+      <button onclick="scrollToId('timeline')" role="listitem">Timeline</button>
+      <button onclick="scrollToId('register')" role="listitem">Register</button>
+      <button onclick="scrollToId('gallery')" role="listitem">Gallery</button>
+      <button onclick="scrollToId('faq')" role="listitem">FAQ</button>
+    </div>
+    <button class="nav-hamburger" id="hamburger-btn" onclick="toggleMenu()" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="nav-mobile">[=]</button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile" role="menu">
+    <button onclick="scrollToId('hero')" role="menuitem">[HOME]</button>
+    <button onclick="scrollToId('about')" role="menuitem">[ABOUT]</button>
+    <button onclick="scrollToId('mascot')" role="menuitem">[MASCOT]</button>
+    <button onclick="scrollToId('competition')" role="menuitem">[COMPETITION]</button>
+    <button onclick="scrollToId('timeline')" role="menuitem">[TIMELINE]</button>
+    <button onclick="scrollToId('register')" role="menuitem">[REGISTER]</button>
+    <button onclick="scrollToId('gallery')" role="menuitem">[GALLERY]</button>
+    <button onclick="scrollToId('faq')" role="menuitem">[FAQ]</button>
+  </div>
+</nav>
+
+<main>
+<section id="hero" aria-label="Hero">
+  <div class="hero-inner">
+    <div class="hero-moon bounce" aria-hidden="true">
+      <svg width="60" height="60" viewBox="0 0 60 60" style="image-rendering:pixelated">
+        <path d="M30 4 C16 4 5 15 5 30 C5 45 16 56 30 56 C24 48 21 38 23 30 C25 20 33 12 46 9 C42 5.8 36 4 30 4Z" fill="#a855f7"/>
+        <circle cx="22" cy="24" r="3" fill="#7c3aed"/>
+        <circle cx="33" cy="36" r="2" fill="#7c3aed"/>
+        <circle cx="18" cy="34" r="2" fill="#7c3aed"/>
+      </svg>
+    </div>
+
+    <div>
+      <h1 class="hero-title glow-pulse">CRESCENTA</h1>
+      <p class="hero-year">2 &nbsp; 0 &nbsp; 2 &nbsp; 6</p>
+    </div>
+
+    <div class="hero-bar">
+      <p>OPBS MAN 1 Surakarta &nbsp;|&nbsp; Present</p>
+    </div>
+
+    <div class="hero-theme">
+      <p>"Empowering Scientific Innovation and Technology<br>as Catalysts for Transformative Civilization"</p>
+    </div>
+
+    <div class="hero-btns" style="margin-top:1rem;">
+      <button class="px-btn" onclick="scrollToId('competition')">COMPETITION &gt;&gt;</button>
+      <a href="https://drive.google.com/drive/folders/113uXKgDkNOpQnDNucdJxl0gSAAKfzFbl?usp=drive_link" target="_blank" rel="noopener noreferrer" class="px-btn green">GUIDEBOOK [?]</a>
+      <button class="px-btn cyan" onclick="scrollToId('register')">GAME START &gt;</button>
+    </div>
+
+    <div class="hero-stats" style="margin-top:1rem;">
+      <div class="hero-stat">
+        <div class="stat-lbl">TANGGAL</div>
+        <div class="stat-val">5 SEPTEMBER 2026</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-lbl">LOKASI</div>
+        <div class="stat-val">MAN 1 Surakarta</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-lbl">PESERTA</div>
+        <div class="stat-val">450+</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-lbl">CABANG LOMBA</div>
+        <div class="stat-val">7</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CITYSCAPE SVG -->
+  <div class="cityscape" aria-hidden="true">
+    <svg viewBox="0 0 1200 360" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="winPattern" width="15" height="21" patternUnits="userSpaceOnUse">
+          <rect width="15" height="21" fill="transparent"/>
+          <rect x="4" y="6" width="10" height="12" class="win"/>
+        </pattern>
+        <pattern id="winPatternCyan" width="15" height="21" patternUnits="userSpaceOnUse">
+          <rect width="15" height="21" fill="transparent"/>
+          <rect x="4" y="6" width="10" height="12" class="win cyan"/>
+        </pattern>
+        <pattern id="winPatternPurple" width="15" height="21" patternUnits="userSpaceOnUse">
+          <rect width="15" height="21" fill="transparent"/>
+          <rect x="4" y="6" width="10" height="12" class="win purple"/>
+        </pattern>
+        <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="strongGlow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="6" result="blur1"/>
+          <feGaussianBlur stdDeviation="12" result="blur2"/>
+          <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <linearGradient id="neonPurpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#e879f9" stop-opacity="0.8"/><stop offset="50%" stop-color="#a855f7" stop-opacity="1"/><stop offset="100%" stop-color="#7c3aed" stop-opacity="0.6"/>
+        </linearGradient>
+        <linearGradient id="neonCyanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.8"/><stop offset="50%" stop-color="#00d4ff" stop-opacity="1"/><stop offset="100%" stop-color="#0891b2" stop-opacity="0.6"/>
+        </linearGradient>
+        <linearGradient id="neonGoldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#fcd34d" stop-opacity="0.8"/><stop offset="50%" stop-color="#f5a623" stop-opacity="1"/><stop offset="100%" stop-color="#b45309" stop-opacity="0.6"/>
+        </linearGradient>
+        <linearGradient id="neonPinkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#f9a8d4" stop-opacity="0.8"/><stop offset="50%" stop-color="#e879f9" stop-opacity="1"/><stop offset="100%" stop-color="#c026d3" stop-opacity="0.6"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Retro Sun -->
+      <g class="retro-sun" style="transform-origin:600px 80px;">
+        <circle cx="600" cy="80" r="50" fill="url(#neonPurpleGrad)" opacity="0.15"/>
+        <circle cx="600" cy="80" r="40" fill="#a855f7" opacity="0.1"/>
+        <circle cx="600" cy="80" r="30" fill="#e879f9" opacity="0.08"/>
+        <rect x="550" y="75" width="100" height="2" fill="#7c3aed" opacity="0.1"/>
+        <rect x="555" y="80" width="90" height="2" fill="#7c3aed" opacity="0.1"/>
+        <rect x="560" y="85" width="80" height="2" fill="#7c3aed" opacity="0.1"/>
+      </g>
+
+      <!-- BUILDING 1 – GOLD -->
+      <g class="building theme-gold building-3d">
+        <rect class="bld-front" x="8" y="75" width="120" height="200"/>
+        <polygon class="bld-side" points="128,75 168,55 168,255 128,275"/>
+        <polygon class="bld-top" points="8,75 128,75 168,55 48,55"/>
+        <rect x="8" y="75" width="120" height="200" fill="url(#winPattern)"/>
+        <line class="neon-edge gold neon-chase" x1="8" y1="75" x2="8" y2="275" stroke="url(#neonGoldGrad)" stroke-width="2"/>
+        <line class="neon-edge gold neon-chase" x1="128" y1="75" x2="128" y2="275" stroke="url(#neonGoldGrad)" stroke-width="2" style="animation-delay:0.5s"/>
+        <line x1="8" y1="78" x2="128" y2="78" stroke="#f5a623" stroke-width="2" filter="url(#neonGlow)" opacity="0.8"/>
+        <g class="lights">
+          <rect class="win-luminous city-win" x="22" y="87" width="10" height="12"/><rect class="win-luminous city-win" x="42" y="87" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="62" y="87" width="10" height="12"/><rect class="win-luminous city-win" x="82" y="87" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="102" y="95" width="10" height="12"/><rect class="win-luminous city-win" x="42" y="110" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="62" y="135" width="10" height="12"/><rect class="win-luminous city-win" x="82" y="160" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="22" y="180" width="10" height="12"/>
+        </g>
+        <g class="lights-purple">
+          <rect class="win purple-glow city-win-purple" x="102" y="87" width="10" height="12"/>
+          <rect class="win purple-glow city-win-purple" x="22" y="130" width="10" height="12"/>
+          <rect class="win purple-glow city-win-purple" x="102" y="180" width="10" height="12"/>
+        </g>
+        <line x1="68" y1="55" x2="68" y2="25" stroke="#4a5568" stroke-width="2"/>
+        <circle cx="68" cy="23" r="3" fill="#ff0040" filter="url(#neonGlow)"><animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- BUILDING 2 – CYAN -->
+      <g class="building theme-cyan building-3d">
+        <rect class="bld-front" x="150" y="45" width="110" height="230"/>
+        <polygon class="bld-side" points="260,45 304,25 304,275 260,275"/>
+        <polygon class="bld-top" points="150,45 260,45 304,25 194,25"/>
+        <rect x="150" y="45" width="110" height="230" fill="url(#winPatternCyan)"/>
+        <line class="neon-edge cyan neon-chase" x1="150" y1="45" x2="150" y2="275" stroke="url(#neonCyanGrad)" stroke-width="2"/>
+        <line class="neon-edge cyan neon-chase" x1="260" y1="45" x2="260" y2="275" stroke="url(#neonCyanGrad)" stroke-width="2" style="animation-delay:0.7s"/>
+        <line x1="150" y1="48" x2="260" y2="48" stroke="#00d4ff" stroke-width="2" filter="url(#neonGlow)" opacity="0.8"/>
+        <line x1="205" y1="45" x2="205" y2="275" stroke="#00d4ff" stroke-width="1" opacity="0.4" filter="url(#neonGlow)"/>
+        <g class="lights">
+          <rect class="win-luminous city-win" x="166" y="63" width="10" height="12"/><rect class="win-luminous city-win" x="186" y="63" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="206" y="63" width="10" height="12"/><rect class="win-luminous city-win" x="226" y="63" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="186" y="95" width="10" height="12"/><rect class="win-luminous city-win" x="206" y="130" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="226" y="160" width="10" height="12"/><rect class="win-luminous city-win" x="166" y="190" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="246" y="100" width="10" height="12"/>
+        </g>
+        <g class="lights-purple">
+          <rect class="win purple-glow city-win-purple" x="246" y="63" width="10" height="12"/>
+          <rect class="win purple-glow city-win-purple" x="166" y="140" width="10" height="12"/>
+          <rect class="win purple-glow city-win-purple" x="246" y="200" width="10" height="12"/>
+        </g>
+        <g class="hologram-billboard" style="transform-origin:205px 35px;">
+          <rect x="185" y="28" width="40" height="14" fill="#0a0c1e" stroke="#a855f7" stroke-width="1" opacity="0.8"/>
+          <text x="188" y="38" class="arcade-sign" font-size="5" fill="#a855f7">ARCADE</text>
+        </g>
+        <line x1="205" y1="25" x2="205" y2="5" stroke="#4a5568" stroke-width="2"/>
+        <circle cx="205" cy="4" r="2.5" fill="#a855f7" filter="url(#neonGlow)"><animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- BUILDING 3 – NEON PURPLE (tall center) -->
+      <g class="building theme-neon-purple building-3d" style="animation-delay:1s;">
+        <rect class="bld-front" x="290" y="15" width="135" height="260"/>
+        <polygon class="bld-side" points="425,15 473,-8 473,267 425,275"/>
+        <polygon class="bld-top" points="290,15 425,15 473,-8 338,-8"/>
+        <rect x="290" y="15" width="135" height="260" fill="url(#winPatternPurple)"/>
+        <line class="neon-edge purple neon-chase" x1="290" y1="15" x2="290" y2="275" stroke="url(#neonPurpleGrad)" stroke-width="3" filter="url(#neonGlow)"/>
+        <line class="neon-edge purple neon-chase" x1="425" y1="15" x2="425" y2="275" stroke="url(#neonPurpleGrad)" stroke-width="3" filter="url(#neonGlow)" style="animation-delay:0.3s"/>
+        <line x1="290" y1="18" x2="425" y2="18" stroke="#a855f7" stroke-width="3" filter="url(#strongGlow)" opacity="0.9"/>
+        <line x1="324" y1="15" x2="324" y2="275" stroke="#e879f9" stroke-width="1.5" opacity="0.5" filter="url(#neonGlow)"/>
+        <line x1="391" y1="15" x2="391" y2="275" stroke="#e879f9" stroke-width="1.5" opacity="0.5" filter="url(#neonGlow)"/>
+        <g class="lights">
+          <rect class="win-luminous city-win" x="304" y="37" width="10" height="12"/><rect class="win-luminous city-win" x="328" y="37" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="352" y="37" width="10" height="12"/><rect class="win-luminous city-win" x="376" y="37" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="400" y="37" width="10" height="12"/><rect class="win-luminous city-win" x="328" y="100" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="352" y="140" width="10" height="12"/><rect class="win-luminous city-win" x="376" y="170" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="304" y="200" width="10" height="12"/><rect class="win-luminous city-win" x="400" y="130" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="352" y="230" width="10" height="12"/>
+        </g>
+        <g class="lights-purple">
+          <rect class="win purple-glow city-win-purple" x="400" y="37" width="10" height="12" style="filter:url(#neonGlow)"/>
+          <rect class="win purple-glow city-win-purple" x="304" y="120" width="10" height="12" style="filter:url(#neonGlow)"/>
+          <rect class="win purple-glow city-win-purple" x="400" y="200" width="10" height="12" style="filter:url(#neonGlow)"/>
+          <rect class="win neon-pink city-win-pink" x="376" y="100" width="10" height="12"/>
+          <rect class="win neon-pink city-win-pink" x="328" y="180" width="10" height="12"/>
+        </g>
+        <g class="hologram-billboard" style="transform-origin:357px -2px;">
+          <rect x="330" y="-12" width="54" height="18" fill="#0a0c1e" stroke="#e879f9" stroke-width="1.5" rx="2"/>
+          <text x="334" y="-1" class="arcade-sign" font-size="6" fill="#e879f9" filter="url(#neonGlow)">CRES</text>
+          <text x="334" y="5" class="arcade-sign" font-size="4" fill="#a855f7">2026</text>
+        </g>
+        <polygon points="350,-8 364,-8 357,-35" fill="#2d1050" stroke="#a855f7" stroke-width="1"/>
+        <circle cx="357" cy="-35" r="3" fill="#e879f9" filter="url(#strongGlow)">
+          <animate attributeName="r" values="3;4.5;3" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- BUILDING 4 – PURPLE -->
+      <g class="building theme-purple building-3d" style="animation-delay:2s;">
+        <rect class="bld-front" x="450" y="55" width="100" height="220"/>
+        <polygon class="bld-side" points="550,55 594,35 594,275 550,275"/>
+        <polygon class="bld-top" points="450,55 550,55 594,35 494,35"/>
+        <rect x="450" y="55" width="100" height="220" fill="url(#winPattern)"/>
+        <line class="neon-edge pink neon-chase" x1="450" y1="55" x2="450" y2="275" stroke="url(#neonPinkGrad)" stroke-width="2"/>
+        <line class="neon-edge pink neon-chase" x1="550" y1="55" x2="550" y2="275" stroke="url(#neonPinkGrad)" stroke-width="2" style="animation-delay:0.4s"/>
+        <line x1="450" y1="58" x2="550" y2="58" stroke="#e879f9" stroke-width="2" filter="url(#neonGlow)" opacity="0.8"/>
+        <g class="lights">
+          <rect class="win-luminous city-win" x="466" y="73" width="10" height="12"/><rect class="win-luminous city-win" x="486" y="73" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="506" y="73" width="10" height="12"/><rect class="win-luminous city-win" x="526" y="73" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="466" y="115" width="10" height="12"/><rect class="win-luminous city-win" x="486" y="145" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="506" y="175" width="10" height="12"/><rect class="win-luminous city-win" x="526" y="200" width="10" height="12"/>
+        </g>
+        <g class="lights-purple">
+          <rect class="win purple-glow city-win-purple" x="526" y="100" width="10" height="12"/>
+          <rect class="win purple-glow city-win-purple" x="466" y="160" width="10" height="12"/>
+          <rect class="win neon-pink city-win-pink" x="506" y="130" width="10" height="12"/>
+        </g>
+        <line x1="500" y1="35" x2="500" y2="20" stroke="#e879f9" stroke-width="2" filter="url(#neonGlow)"/>
+        <line x1="492" y1="28" x2="508" y2="28" stroke="#e879f9" stroke-width="2" filter="url(#neonGlow)"/>
+      </g>
+
+      <!-- BUILDING 5 – GOLD WIDE -->
+      <g class="building theme-gold building-3d" style="animation-delay:0.5s;">
+        <rect class="bld-front" x="575" y="30" width="140" height="245"/>
+        <polygon class="bld-side" points="715,30 765,8 765,278 715,275"/>
+        <polygon class="bld-top" points="575,30 715,30 765,8 625,8"/>
+        <rect x="575" y="30" width="140" height="245" fill="url(#winPattern)"/>
+        <line class="neon-edge gold neon-chase" x1="575" y1="30" x2="575" y2="275" stroke="url(#neonGoldGrad)" stroke-width="2"/>
+        <line class="neon-edge gold neon-chase" x1="715" y1="30" x2="715" y2="275" stroke="url(#neonGoldGrad)" stroke-width="2" style="animation-delay:0.6s"/>
+        <line x1="575" y1="33" x2="715" y2="33" stroke="#f5a623" stroke-width="2" filter="url(#neonGlow)" opacity="0.8"/>
+        <line x1="645" y1="30" x2="645" y2="275" stroke="#f5a623" stroke-width="1" opacity="0.4" filter="url(#neonGlow)"/>
+        <g class="lights">
+          <rect class="win-luminous city-win" x="591" y="52" width="10" height="12"/><rect class="win-luminous city-win" x="615" y="52" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="639" y="52" width="10" height="12"/><rect class="win-luminous city-win" x="663" y="52" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="687" y="52" width="10" height="12"/><rect class="win-luminous city-win" x="615" y="110" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="639" y="150" width="10" height="12"/><rect class="win-luminous city-win" x="663" y="185" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="687" y="220" width="10" height="12"/><rect class="win-luminous city-win" x="591" y="170" width="10" height="12"/>
+        </g>
+        <g class="lights-purple">
+          <rect class="win purple-glow city-win-purple" x="591" y="100" width="10" height="12"/>
+          <rect class="win purple-glow city-win-purple" x="687" y="130" width="10" height="12"/>
+          <rect class="win neon-pink city-win-pink" x="639" y="200" width="10" height="12"/>
+          <rect class="win neon-pink city-win-pink" x="663" y="95" width="10" height="12"/>
+        </g>
+        <rect x="620" y="5" width="50" height="12" fill="#0a0c1e" stroke="#f5a623" stroke-width="1"/>
+        <text x="624" y="13" class="arcade-sign" font-size="4" fill="#f5a623">OPEN</text>
+      </g>
+
+      <!-- BUILDING 6 – CYAN -->
+      <g class="building theme-cyan building-3d" style="animation-delay:1.5s;">
+        <rect class="bld-front" x="745" y="40" width="110" height="235"/>
+        <polygon class="bld-side" points="855,40 899,20 899,275 855,275"/>
+        <polygon class="bld-top" points="745,40 855,40 899,20 789,20"/>
+        <rect x="745" y="40" width="110" height="235" fill="url(#winPatternCyan)"/>
+        <line class="neon-edge cyan neon-chase" x1="745" y1="40" x2="745" y2="275" stroke="url(#neonCyanGrad)" stroke-width="2"/>
+        <line class="neon-edge cyan neon-chase" x1="855" y1="40" x2="855" y2="275" stroke="url(#neonCyanGrad)" stroke-width="2" style="animation-delay:0.8s"/>
+        <line x1="745" y1="43" x2="855" y2="43" stroke="#00d4ff" stroke-width="2" filter="url(#neonGlow)" opacity="0.8"/>
+        <g class="lights">
+          <rect class="win-luminous city-win" x="761" y="60" width="10" height="12"/><rect class="win-luminous city-win" x="783" y="60" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="805" y="60" width="10" height="12"/><rect class="win-luminous city-win" x="827" y="60" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="761" y="120" width="10" height="12"/><rect class="win-luminous city-win" x="783" y="160" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="805" y="200" width="10" height="12"/><rect class="win-luminous city-win" x="827" y="130" width="10" height="12"/>
+        </g>
+        <g class="lights-purple">
+          <rect class="win purple-glow city-win-purple" x="827" y="90" width="10" height="12"/>
+          <rect class="win purple-glow city-win-purple" x="761" y="180" width="10" height="12"/>
+          <rect class="win neon-pink city-win-pink" x="805" y="140" width="10" height="12"/>
+        </g>
+        <circle cx="800" cy="15" r="10" fill="none" stroke="#00d4ff" stroke-width="2" filter="url(#neonGlow)" opacity="0.8">
+          <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- BUILDING 7 – TALL RIGHT NEON PURPLE -->
+      <g class="building theme-neon-purple building-3d" style="animation-delay:0.3s;">
+        <rect class="bld-front" x="895" y="10" width="120" height="265"/>
+        <polygon class="bld-side" points="1015,10 1063,-13 1063,272 1015,275"/>
+        <polygon class="bld-top" points="895,10 1015,10 1063,-13 943,-13"/>
+        <rect x="895" y="10" width="120" height="265" fill="url(#winPatternPurple)"/>
+        <line class="neon-edge purple neon-chase" x1="895" y1="10" x2="895" y2="275" stroke="url(#neonPurpleGrad)" stroke-width="3" filter="url(#neonGlow)"/>
+        <line class="neon-edge purple neon-chase" x1="1015" y1="10" x2="1015" y2="275" stroke="url(#neonPurpleGrad)" stroke-width="3" filter="url(#neonGlow)" style="animation-delay:0.5s"/>
+        <line x1="895" y1="13" x2="1015" y2="13" stroke="#a855f7" stroke-width="3" filter="url(#strongGlow)" opacity="0.9"/>
+        <line x1="930" y1="10" x2="930" y2="275" stroke="#e879f9" stroke-width="1.5" opacity="0.5" filter="url(#neonGlow)"/>
+        <line x1="980" y1="10" x2="980" y2="275" stroke="#e879f9" stroke-width="1.5" opacity="0.5" filter="url(#neonGlow)"/>
+        <g class="lights">
+          <rect class="win-luminous city-win" x="911" y="32" width="10" height="12"/><rect class="win-luminous city-win" x="935" y="32" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="959" y="32" width="10" height="12"/><rect class="win-luminous city-win" x="983" y="32" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="1007" y="32" width="10" height="12"/><rect class="win-luminous city-win" x="935" y="110" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="959" y="160" width="10" height="12"/><rect class="win-luminous city-win" x="983" y="200" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="911" y="180" width="10" height="12"/><rect class="win-luminous city-win" x="1007" y="130" width="10" height="12"/>
+        </g>
+        <g class="lights-purple">
+          <rect class="win purple-glow city-win-purple" x="1007" y="70" width="10" height="12" style="filter:url(#neonGlow)"/>
+          <rect class="win purple-glow city-win-purple" x="911" y="130" width="10" height="12" style="filter:url(#neonGlow)"/>
+          <rect class="win purple-glow city-win-purple" x="1007" y="220" width="10" height="12" style="filter:url(#neonGlow)"/>
+          <rect class="win neon-pink city-win-pink" x="959" y="90" width="10" height="12"/>
+          <rect class="win neon-pink city-win-pink" x="983" y="140" width="10" height="12"/>
+        </g>
+        <g class="hologram-billboard" style="transform-origin:955px -8px;">
+          <rect x="925" y="-18" width="60" height="22" fill="#0a0c1e" stroke="#a855f7" stroke-width="2" rx="2"/>
+          <text x="929" y="-5" class="arcade-sign" font-size="7" fill="#e879f9" filter="url(#neonGlow)">CRES 26</text>
+          <text x="935" y="1" class="arcade-sign" font-size="4" fill="#a855f7">CRESCENTA</text>
+        </g>
+        <line x1="955" y1="-18" x2="955" y2="-50" stroke="#4a5568" stroke-width="2"/>
+        <circle cx="955" cy="-52" r="4" fill="#ff0040" filter="url(#strongGlow)">
+          <animate attributeName="r" values="3;5;3" dur="1s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- BUILDING 8 – GOLD FAR RIGHT -->
+      <g class="building theme-gold building-3d" style="animation-delay:2.5s;">
+        <rect class="bld-front" x="1060" y="60" width="110" height="215"/>
+        <polygon class="bld-side" points="1170,60 1210,42 1210,275 1170,275"/>
+        <polygon class="bld-top" points="1060,60 1170,60 1210,42 1100,42"/>
+        <rect x="1060" y="60" width="110" height="215" fill="url(#winPattern)"/>
+        <line class="neon-edge gold neon-chase" x1="1060" y1="60" x2="1060" y2="275" stroke="url(#neonGoldGrad)" stroke-width="2"/>
+        <line class="neon-edge gold neon-chase" x1="1170" y1="60" x2="1170" y2="275" stroke="url(#neonGoldGrad)" stroke-width="2" style="animation-delay:0.3s"/>
+        <line x1="1060" y1="63" x2="1170" y2="63" stroke="#f5a623" stroke-width="2" filter="url(#neonGlow)" opacity="0.8"/>
+        <g class="lights">
+          <rect class="win-luminous city-win" x="1076" y="77" width="10" height="12"/><rect class="win-luminous city-win" x="1098" y="77" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="1120" y="77" width="10" height="12"/><rect class="win-luminous city-win" x="1142" y="77" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="1076" y="130" width="10" height="12"/><rect class="win-luminous city-win" x="1098" y="160" width="10" height="12"/>
+          <rect class="win-luminous city-win" x="1120" y="200" width="10" height="12"/><rect class="win-luminous city-win" x="1142" y="170" width="10" height="12"/>
+        </g>
+        <g class="lights-purple">
+          <rect class="win purple-glow city-win-purple" x="1142" y="110" width="10" height="12"/>
+          <rect class="win purple-glow city-win-purple" x="1076" y="180" width="10" height="12"/>
+          <rect class="win neon-pink city-win-pink" x="1120" y="140" width="10" height="12"/>
+        </g>
+        <line x1="1115" y1="42" x2="1115" y2="20" stroke="#4a5568" stroke-width="2"/>
+        <circle cx="1115" cy="18" r="2.5" fill="#00d4ff" filter="url(#neonGlow)"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- Ground -->
+      <rect x="0" y="295" width="1200" height="5" fill="#2a1b4a" stroke="#a855f7" stroke-width="2"/>
+      <line x1="0" y1="298" x2="1200" y2="298" stroke="#e879f9" stroke-width="1" filter="url(#neonGlow)" opacity="0.6"/>
+    </svg>
+  </div>
+</section>
+
+<div class="marquee-bar" aria-label="Info acara" role="marquee">
+  <div class="marquee-track">
+    <span>CRESCENTA 2026 &bull; MAN 1 SURAKARTA &bull; 5 SEPTEMBER 2026 &bull; JAWA-BALI &bull; OLIMPIADE MATEMATIKA &bull; OLIMPIADE IPA &bull; LOMBA CERDAS CERMAT &bull; ROBOSOCCER &bull; MAZE SOLVING &bull; PROJEK INOVASI &bull; ESSAY &bull; 450+ PESERTA &bull; OPBS MAN 1 SURAKARTA &bull;&nbsp;</span>
+    <span aria-hidden="true">CRESCENTA 2026 &bull; MAN 1 SURAKARTA &bull; 5 SEPTEMBER 2026 &bull; JAWA-BALI &bull; OLIMPIADE MATEMATIKA &bull; OLIMPIADE IPA &bull; LOMBA CERDAS CERMAT &bull; ROBOSOCCER &bull; MAZE SOLVING &bull; PROJEK INOVASI &bull; ESSAY &bull; 450+ PESERTA &bull; OPBS MAN 1 SURAKARTA &bull;&nbsp;</span>
+  </div>
+</div>
+
+<section id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="sec-title">
+      <p class="eyebrow">-- GAME INFO --</p>
+      <h2 id="about-title">ABOUT THE EVENT</h2>
+      <hr class="rule"/>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="unit">EST</div><span class="big">2013</span><div class="sublbl">TAHUN BERDIRI</div></div>
+      <div class="stat-card"><div class="unit">KE-</div><span class="big">XIV</span><div class="sublbl">PENYELENGGARAAN</div></div>
+      <div class="stat-card"><div class="unit">PLAYERS</div><span class="big">450+</span><div class="sublbl">PESERTA</div></div>
+      <div class="stat-card"><span class="big">7</span><div class="sublbl">CABANG LOMBA</div></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-card pxb-cyan" style="background:rgba(0,212,255,0.04)">
+        <h3 class="text-cyan">PROFIL KEGIATAN</h3>
+        <p><strong class="text-gold">CRESCENTA</strong> (Competition and Creation of Science and Technology for Modern Science Application) adalah program kerja tahunan yang diselenggarakan oleh <strong class="text-cyan">OPBS MAN 1 Surakarta</strong> sejak 2013. Tahun ini merupakan penyelenggaraan ke-14, dengan peserta dari SMP/MTs dan SMA/MA se-Jawa-Bali yang terus meningkat setiap tahunnya.</p>
+      </div>
+      <div class="about-card pxb-green" style="background:rgba(57,255,20,0.04)">
+        <h3 class="text-green">TUJUAN KEGIATAN</h3>
+        <ul>
+          <li>Mengembangkan individu yang kompetitif, berintegritas, dan adaptif</li>
+          <li>Menyediakan wadah peningkatan kemampuan sains dan teknologi</li>
+          <li>Mendorong eksplorasi minat dan bakat di bidang IPTEK</li>
+          <li>Memberikan kesempatan menggali potensi dan ide-ide inovatif</li>
+        </ul>
+      </div>
+    </div>
+    <div class="organizer-bar">
+      <div class="small-lbl">DISELENGGARAKAN OLEH</div>
+      <div class="org-name">OPBS MAN 1 SURAKARTA</div>
+      <div class="org-sub">Masa Bakti 2025/2026</div>
+    </div>
+  </div>
+</section>
+
+<section id="mascot" aria-labelledby="mascot-title">
+  <div class="container">
+    <div class="sec-title">
+      <p class="eyebrow" style="color:var(--gold)">-- MEET OUR HERO --</p>
+      <h2 id="mascot-title">MASKOT CRESCENTA</h2>
+      <hr class="rule" style="background:linear-gradient(90deg,transparent,var(--gold),transparent)"/>
+    </div>
+    <div class="about-card pxb-gold mascot-box" style="background:rgba(245,166,35,0.04)">
+      <div class="mascot-img-wrap">
+        <img src="assets/mascot.webp" alt="Maskot CRESCENTA 2026 bernama CYRA – naga bulan kecil berwarna biru" width="160" height="160" style="width:100%;height:100%;object-fit:contain;padding:10px;" loading="lazy">
+      </div>
+      <div>
+        <h3 class="text-gold glow-gold" style="font-size:1rem;margin-bottom:0.8rem;">CYRA</h3>
+        <p>HII ARCADIANZ, Meet CYRA the official mascot of CRESCENTA 2026—a cheerful little moon dragon who symbolizes curiosity, creativity, courage, and limitless imagination. CYRA accompanies every participant on an exciting journey of learning, innovation, and discovery, inspiring everyone to dream bigger, explore further, and create a brighter future together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="competition" aria-labelledby="competition-title">
+  <div class="container">
+    <div class="sec-title">
+      <p class="eyebrow">-- CHOOSE YOUR CHALLENGE --</p>
+      <h2 id="competition-title">COMPETITION</h2>
+      <hr class="rule" style="background:linear-gradient(90deg,transparent,var(--cyan),transparent)"/>
+    </div>
+    <div class="levels-grid" id="levels-grid"></div>
+  </div>
+</section>
+
+<section id="timeline" aria-labelledby="timeline-title">
+  <div class="container">
+    <div class="sec-title">
+      <p class="eyebrow" style="color:var(--green)">-- MISSION BRIEFING --</p>
+      <h2 id="timeline-title">GAME SCHEDULE</h2>
+      <hr class="rule" style="background:linear-gradient(90deg,transparent,var(--green),transparent)"/>
+    </div>
+    <div class="day-header">
+      <div class="dh-title">SABTU, 5 SEPTEMBER 2026</div>
+      <div class="dh-sub">MAN 1 Surakarta &nbsp;|&nbsp; 06.30 WIB - Selesai</div>
+    </div>
+    <div class="sched-list" id="sched-list"></div>
+  </div>
+</section>
+
+<section id="register" aria-labelledby="register-title">
+  <div class="container">
+    <div class="sec-title">
+      <p class="eyebrow" style="color:var(--purple)">-- INSERT COIN TO PLAY --</p>
+      <h2 id="register-title">DAFTARKAN TIM</h2>
+      <hr class="rule" style="background:linear-gradient(90deg,transparent,var(--purple),transparent)"/>
+    </div>
+    <div class="reg-coin" aria-hidden="true">$</div>
+    <div class="reg-card">
+      <div class="register-container">
+        <h3 class="register-title">Ready to Join CRESCENTA 2026?</h3>
+        <p class="register-description">Registration is now open! Click the button below to complete your registration through our official Google Form.</p>
+        <a href="https://forms.gle/GikRLcuFebFgLspZA" target="_blank" rel="noopener noreferrer" class="register-btn" aria-label="Daftar CRESCENTA 2026 melalui Google Form (buka tab baru)">
+          🚀 Register Now
+        </a>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-card pxb-cyan" style="background:rgba(0,212,255,0.04)">
+        <div class="cc-label text-cyan">CONTACT</div>
+        <p>OPBS MAN 1 Surakarta</p>
+        <p>IG: @officialopbs_man1ska</p>
+      </div>
+      <div class="contact-card pxb-green" style="background:rgba(57,255,20,0.04)">
+        <div class="cc-label text-green">LOCATION</div>
+        <p>MAN 1 Surakarta</p>
+        <p>Jl. Sumpah Pemuda No.25, Banjarsari, Kota Surakarta, Jawa Tengah, Indonesia</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" aria-labelledby="gallery-title">
+  <div class="container">
+    <div class="sec-title">
+      <p class="eyebrow" style="color:var(--cyan)">-- PREVIOUS QUESTS --</p>
+      <h2 id="gallery-title">GALERI 2025</h2>
+      <hr class="rule" style="background:linear-gradient(90deg,transparent,var(--cyan),transparent)"/>
+    </div>
+    <div class="gallery-wrapper">
+      <div class="gallery-track" id="gallery-track"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Modal -->
+<div id="gallery-modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption" aria-hidden="true">
+  <div class="modal-content float-in">
+    <button class="modal-close" onclick="closeGalleryModal()" aria-label="Tutup galeri">X</button>
+    <div class="modal-img-container" id="modal-img">GAMBAR</div>
+    <div class="modal-caption" id="modal-caption">Teks Caption Disini</div>
+  </div>
+</div>
+
+<section id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="sec-title">
+      <p class="eyebrow">-- HELP & INFO --</p>
+      <h2 id="faq-title">FAQ</h2>
+      <hr class="rule"/>
+    </div>
+    <div class="faq-list" id="faq-list"></div>
+  </div>
+</section>
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="footer-gameover" aria-label="GAME OVER">GAME OVER</div>
+  <div class="footer-rule"></div>
+  <p class="footer-copy">CRESCENTA 2026 &copy; OPBS MAN 1 SURAKARTA &mdash; ALL RIGHTS RESERVED</p>
+  <p class="footer-sub">5 September 2026 &nbsp;|&nbsp; MAN 1 Surakarta, Jawa Tengah</p>
+  <div class="footer-contacts">
+    <div class="footer-contact-item">
+      <div class="fc-label">INSTAGRAM</div><div class="fc-val">@opbs_man1ska</div>
+    </div>
+    <div class="footer-contact-item">
+      <div class="fc-label">EMAIL</div><div class="fc-val">opbs@man1ska.id</div>
+    </div>
+    <div class="footer-contact-item">
+      <div class="fc-label">LOKASI</div><div class="fc-val">MAN 1 Surakarta</div>
+    </div>
+  </div>
+  <p class="footer-press">&lt;&lt; PRESS START TO PLAY AGAIN &gt;&gt;</p>
+</footer>
+
+<button id="scroll-top" onclick="scrollToId('hero')" aria-label="Kembali ke atas halaman">[ ^ ]</button>
+
+<!-- Link to External JS (defer ensures it loads after HTML is parsed) -->
+<script src="script.js" defer></script>
+
+</body>
+</html>
