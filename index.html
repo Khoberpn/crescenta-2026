@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRESCENTA 2026</title>
+    <link rel="icon" type="image/webp" href="assets/logo.webp">
+    <meta name="description" content="CRESCENTA 2026 — an annual science and technology competition by OPBS MAN 1 Surakarta.">
+    <meta name="theme-color" content="#1a002e">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cursor Effect -->
+    <div id="cursor" aria-hidden="true"></div>
+    <div id="cursor-follower" aria-hidden="true"></div>
+
+    <!-- Background Layers -->
+    <div class="background">
+        <div class="layer layer-1"></div> <!-- Stars -->
+        <div class="layer layer-2">
+            <img src="assets/moon.png" alt="Moon" class="custom-moon">
+        </div> <!-- Moon -->
+        <div class="layer layer-3"></div> <!-- Clouds -->
+        <img src="assets/cloud.png" alt="Cloud" class="custom-cloud">
+
+        <!-- Layer 4: 3D Neon Arcade Skyline -->
+        <div class="layer layer-4 neon-skyline" aria-hidden="true">
+            <div class="building b1"><span class="face-top"></span><span class="face-side"></span><span class="antenna"></span></div>
+            <div class="building b2"><span class="face-top"></span><span class="face-side"></span></div>
+            <div class="building b3"><span class="face-top"></span><span class="face-side"></span><span class="sign">CRESCENTA</span></div>
+            <div class="building b4"><span class="face-top"></span><span class="face-side"></span></div>
+            <div class="building b5"><span class="face-top"></span><span class="face-side"></span><span class="antenna"></span></div>
+            <div class="building b6"><span class="face-top"></span><span class="face-side"></span></div>
+            <div class="building b7"><span class="face-top"></span><span class="face-side"></span><span class="sign">ARCADE</span></div>
+            <div class="building b8"><span class="face-top"></span><span class="face-side"></span></div>
+            <div class="building b9"><span class="face-top"></span><span class="face-side"></span><span class="antenna"></span></div>
+        </div>
+
+        <div class="layer layer-5"></div> <!-- Mountains -->
+        <div class="layer layer-6"></div> <!-- Grid -->
+        <div class="layer layer-7"></div> <!-- Floating elements -->
+
+        <!-- Flying saucer + patrolling robot for extra motion -->
+        <div class="ufo" aria-hidden="true">
+            <div class="ufo-body"></div>
+            <div class="ufo-dome"></div>
+            <div class="ufo-beam"></div>
+        </div>
+        <div class="patrol-robot" aria-hidden="true">
+            <div class="robot-head"></div>
+            <div class="robot-body"></div>
+            <div class="robot-leg leg-left"></div>
+            <div class="robot-leg leg-right"></div>
+        </div>
+
+        <!-- CRT scanlines + vignette for arcade-screen feel -->
+        <div class="crt-scanlines" aria-hidden="true"></div>
+        <div class="crt-vignette" aria-hidden="true"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Navigation -->
+        <nav aria-label="Main navigation">
+    <a href="#hero" class="logo">
+        <img src="assets/logo.webp" alt="Logo CRESCENTA">
+    </a>
+    <ul class="nav-links" id="primary-navigation">
+        <!-- ... -->
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#competitions">Competitions</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#sponsors">Sponsors</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="hero" class="section">
+            <div class="hero-content">
+                <p class="insert-coin">✦ Insert Coin To Continue ✦</p>
+                <h1>CRESCENTA <span>2026</span></h1>
+                <img src="assets/star.png" alt="Star" class="title-star">
+                <p class="subtitle">Empowering Scientific Innovation and Technology as Catalysts for Transformative Civilization</p>
+                
+                <!-- Bagian Tombol -->
+                <div class="hero-buttons">
+                    <a href="#competitions" class="btn-primary">Explore Competitions</a>
+                    <a href="https://forms.gle/GikRLcuFebFgLspZA" target="_blank" rel="noopener noreferrer" class="btn-secondary">Register Now</a>
+                    <a href="https://drive.google.com/drive/folders/113uXKgDkNOpQnDNucdJxl0gSAAKfzFbl?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-tertiary">GuideBook</a>
+                </div>
+                
+                <!-- Hero Characters (Dikembalikan) -->
+                <div class="hero-characters">
+                    <div class="wizard"></div>
+                    <div class="pacman"></div>
+                    <div class="ghost"></div>
+                    <div class="hero-robot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About CRESCENTA</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>CRESCENTA is an annual science and technology competition that encourages students to innovate, collaborate, think critically, and solve real-world problems through science, robotics, engineering, programming, mathematics, and technology.</p>
+                        <p>Organized by the Boarding School Student Organization (OPBS) of MAN 1 Surakarta, CRESCENTA 2026 aims to empower scientific innovation and technology as catalysts for transformative civilization.</p>
+                        <p>Targeting Junior High School and Senior High School students across Java and Bali, the competition features seven exciting categories designed to challenge and inspire the next generation of innovators.</p>
+                    </div>
+                    <div class="about-image">
+                        <div class="pixel-lab"></div>
+                        <div class="floating-book"></div>
+                    </div>
+                </div>
+            <!-- ============================================== -->
+                <!-- 3 BOX  -->
+                <!-- ============================================== -->
+                <div class="about-stats">
+                    <!-- Box 1 -->
+                    <div class="stat-box">
+                        <h3 class="stat-number">XIV</h3>
+                        <p class="stat-label">14th Edition<br>Since 2013</p>
+                    </div>
+                    <!-- Box 2 (Tengah) -->
+                    <div class="stat-box featured">
+                        <h3 class="stat-number">OPBS</h3>
+                        <p class="stat-label">Organized by:<br>Organisasi Pelajar Boarding School (OPBS) MAN 1 Surakarta</p>
+                    </div>
+                    <!-- Box 3 -->
+                    <div class="stat-box">
+                        <h3 class="stat-number">450+</h3>
+                        <p class="stat-label">Total<br>Participants</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================= -->
+<!-- NEW CHARACTER UNLOCKED -->
+<!-- ============================= -->
+
+<section id="mascot" class="section mascot-section">
+
+    <div class="unlock-title">
+        <span>NEW CHARACTER UNLOCKED</span>
+    </div>
+    <div class="mascot-card hidden-card">
+        <div class="mascot-circle">
+            <!-- nanti diganti gambar maskot -->
+            <img src="assets/mascot.webp" alt="Mascot">
+        </div>
+        <div class="mascot-info">
+            <h2>CYRA</h2>
+            <h4>a little moon dragon</h4>
+            <p>
+
+              HII ARCADIANZ, Meet CYRA the official mascot of CRESCENTA 2026
+              —a cheerful little moon dragon who symbolizes curiosity, creativity, courage, and limitless imagination. 
+              CYRA accompanies every participant on an exciting journey of learning, innovation, and discovery, 
+              inspiring everyone to dream bigger, explore further, and create a brighter future together.
+
+            </p>
+        </div>
+    </div>
+</section>
+
+        <!-- Competitions Section -->
+        <section id="competitions" class="section">
+            <div class="container">
+                <h2 class="section-title">Competition Categories</h2>
+                <div class="competitions-grid">
+                    <!-- Math Olympiad -->
+                    <div class="competition-card">
+                        <div class="card-front">
+                            <div class="pixel-icon math"></div>
+                            <h3>Mathematics Olympiad</h3>
+                            <p>Sharpen your reasoning skills and solve complex mathematical problems</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Mathematics Olympiad</h3>
+                            <p>An individual competition designed to enhance your talent, understanding, and logical reasoning in mathematics. The competition consists of highly competitive preliminary and final rounds</p>
+                            <ul>
+                                <li>Junior High School (SMP/MTs) level</li>
+                                <li>Individual competition format</li>
+                                <li>Preliminary and final rounds</li>
+                                <li>Compete for the top 5 champion titles</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Science Olympiad -->
+                    <div class="competition-card">
+                        <div class="card-front">
+                            <div class="pixel-icon science"></div>
+                            <h3>Science Olympiad</h3>
+                            <p>Explore your intellectual capabilities in Biology, Chemistry, and Physics</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Science Olympiad</h3>
+                            <p>An individual competition aimed at expanding intellectual knowledge and analytical skills in Natural Sciences. It serves as an effective platform to motivate students in exploring the wonders of science.</p>
+                            <ul>
+                                <li>Junior High School (SMP/MTs) level</li>
+                                <li>Covers Biology, Chemistry, & Physics</li>
+                                <li>Preliminary and final rounds</li>
+                                <li>Compete for the top 5 champion titles</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Quiz Bowl -->
+                    <div class="competition-card">
+                        <div class="card-front">
+                            <div class="pixel-icon quiz"></div>
+                            <h3>Lomba Cerdas Cermat (LCC)</h3>
+                            <p>Test your team's intelligence, accuracy, and quick-thinking skills</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Lomba Cerdas Cermat (LCC)</h3>
+                            <p>A fast-paced, team-based competition testing knowledge across Math, Science, English, and General Knowledge. It features a written preliminary round and an exciting buzzer-based final round.</p>
+                            <ul>
+                                <li>Junior High School (SMP/MTs) level</li>
+                                <li>Team-based multidisciplinary trivia</li>
+                                <li>Written test & buzzer-based finals</li>
+                                <li>Compete for the top 5 champion titles</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Robosoccer -->
+                    <div class="competition-card">
+                        <div class="card-front">
+                            <div class="pixel-icon robosoccer"></div>
+                            <h3>Robosoccer</h3>
+                            <p>Build, strategize, and pilot your robot in a thrilling soccer match.</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Robosoccer</h3>
+                            <p>A robotics competition where custom-designed robots compete in 1-on-1 soccer matches. Featuring a Single Elimination bracket, teams must work together using one pilot and one strategist.</p>
+                            <ul>
+                                <li>Junior High School (SMP/MTs) level</li>
+                                <li>Wireless manual robot control</li>
+                                <li>Single elimination bracket system</li>
+                                <li>Compete for the top 3 champion titles</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Robot Maze -->
+                    <div class="competition-card">
+                        <div class="card-front">
+                            <div class="pixel-icon maze"></div>
+                            <h3>Robot Maze Solving</h3>
+                            <p>Program agile robots to navigate and conquer complex tracks</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Robot Maze Solving</h3>
+                            <p>A team-based competition designed to test programming skills and robotic agility. Teams must use strategic thinking to complete the designated track in the fastest time to achieve the highest score.</p>
+                            <ul>
+                                <li>Junior High School (SMP/MTs) level</li>
+                                <li>Team-based programming challenge</li>
+                                <li>Fastest time & highest score wins</li>
+                                <li>Compete for the top 4 champion titles</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Innovation Project -->
+                    <div class="competition-card">
+                        <div class="card-front">
+                            <div class="pixel-icon innovation"></div>
+                            <h3>Innovation Project</h3>
+                            <p>Create innovative microcontroller solutions for real-world problems</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Innovation Project</h3>
+                            <p>Develop robotics and IoT solutions using microcontrollers like Arduino, Wemos, or ESP to solve everyday challenges. Participants will build their prototypes and pitch their mechanisms to the judges.</p>
+                            <ul>
+                                <li>Junior High School (SMP/MTs) level</li>
+                                <li>Build with Arduino, Wemos, or ESP</li>
+                                <li>Prototype assembly & live pitc</li>
+                                <li>Compete for the top 5 champion titles</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Scientific Essay -->
+                    <div class="competition-card">
+                        <div class="card-front">
+                            <div class="pixel-icon essay"></div>
+                            <h3>Scientific Essay</h3>
+                            <p>Showcase your critical thinking and innovative solutions through writing.</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Scientific Essay</h3>
+                            <p>A competition for high school students to express analytical ideas and arguments regarding current issues. Finalists will have the opportunity to present and defend their essays in front of expert judges.</p>
+                            <ul>
+                                <li>High School (SMA/MA) level</li>
+                                <li>Essay writing & live presentation</li>
+                                <li>Compete for the top 5 champion titles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="section">
+            <div class="container">
+                <h2 class="section-title">Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">📝</div>
+                        <div class="timeline-content">
+                            <h3>Registration Opens</h3>
+                            <p>July 18, 2026</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">❌</div>
+                        <div class="timeline-content">
+                            <h3>Closed Registration</h3>
+                            <p>August 25, 2026</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🏆</div>
+                        <div class="timeline-content">
+                            <h3>Main Competition</h3>
+                            <p>September 5, 2026</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🎉</div>
+                        <div class="timeline-content">
+                            <h3>Final Competition</h3>
+                            <p>September 5, 2026</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🏅</div>
+                        <div class="timeline-content">
+                            <h3>Award Ceremony</h3>
+                            <p>September 5, 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section">
+            <div class="container">
+                <h2 class="section-title">Past Events Gallery</h2>
+                <div class="gallery-grid">
+                    <!-- Gallery items would be images, but we'll use placeholder pixel art -->
+                    <div class="gallery-item">
+                        <img src="assets/foto1.webp" alt="Galeri 1" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>CRESCENTA 2025</h3>
+                            <p>Highlights from last year's competition</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto3.webp" alt="Galeri 1" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Robosoccer Championship</h3>
+                            <p>Exciting matches from the robot soccer tournament</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto2.webp" alt="Galeri 1" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Science Olympiad</h3>
+                            <p>Young scientists showcasing their experiments</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/foto4.webp" alt="Galeri 1" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Project Innovation Final Competition</h3>
+                            <p>Groundbreaking student projects on display</p>
+                        </div>
+                    </div>
+                    <!-- BOX TAMBAHAN 1 -->
+                    <div class="gallery-item">
+                        <!-- Masukkan gambar asli di sini, beri class "gallery-img" -->
+                        <img src="assets/foto5.webp" alt="Galeri 1" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>LCC Final Competition</h3>
+                            <p>Participants discuss questions related to the LCC.</p>
+                        </div>
+                    </div>
+                    <!-- BOX TAMBAHAN 2 -->
+                    <div class="gallery-item">
+                        <img src="assets/foto6.webp" alt="Galeri 2" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Maze Solving Challenge</h3>
+                            <p>A maze-solving robot moving across the scene</p>
+                        </div>
+                    </div>
+                    <!-- BOX TAMBAHAN 3 -->
+                    <div class="gallery-item">
+                        <img src="assets/foto8.webp" alt="Galeri 3" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Mathematics Olympiad</h3>
+                            <p>Students solving challenging math problems</p>
+                        </div>
+                    </div>
+                    <!-- BOX TAMBAHAN 4 -->
+                    <div class="gallery-item">
+                        <img src="assets/foto7.webp" alt="Galeri 4" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Awarding Ceremony</h3>
+                            <p>The end-peak of the Crescenta event CONGRATS to the Champion!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section id="sponsors" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Sponsors</h2>
+                <div class="sponsors-grid">
+                    <!-- Sponsor logos would go here, using placeholder pixel art -->
+                    <div class="sponsor">
+                        <div class="pixel-sponsor"></div>
+                    </div>
+                    <div class="sponsor">
+                        <div class="pixel-sponsor"></div>
+                    </div>
+                    <div class="sponsor">
+                        <div class="pixel-sponsor"></div>
+                    </div>
+                    <div class="sponsor">
+                        <div class="pixel-sponsor"></div>
+                    </div>
+                    <div class="sponsor">
+                        <div class="pixel-sponsor"></div>
+                    </div>
+                    <div class="sponsor">
+                        <div class="pixel-sponsor"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Who can participate in CRESCENTA?</h3>
+                            <div class="faq-icon">+</div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>CRESCENTA is open to Junior High School and Senior High School students across Java and Bali.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I register for the competition?</h3>
+                            <div class="faq-icon">+</div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Registration is done online through our website. Visit the Registration page and fill out the form.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What are the competition categories?</h3>
+                            <div class="faq-icon">+</div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>CRESCENTA features seven categories: Mathematics Olympiad, Science Olympiad, Quiz Bowl (LCC), Robosoccer, Robot Maze Solving, Innovation Project, and Scientific Essay.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is there a registration fee?</h3>
+                            <div class="faq-icon">+</div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, there is a modest registration fee to cover operational costs. Details are available on the Registration page.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What prizes are available?</h3>
+                            <div class="faq-icon">+</div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Winners receive trophies, medals, certificates, and exciting tech prizes. All participants get certificates of participation.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Where will the competition be held?</h3>
+                            <div class="faq-icon">+</div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The competition will be held at MAN 1 Surakarta and surrounding venues for specific categories.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p><strong>Email:</strong> redaksiopbs1@gmail.com</p>
+                        <p><strong>Phone:</strong> +62 859-4748-6109</p>
+                        <p><strong>Address:</strong> MAN 1 Surakarta, Jalan Sumpah Pemuda No. 25, Kelurahan Banjarsari, 
+                            Kecamatan Banjarsari, Kota Surakarta, Jawa Tengah</p>
+                        <div class="social-links">
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/officialopbs_man1ska/" target="_blank" title="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <!-- YouTube -->
+                            <a href="https://www.youtube.com/@officialopbsman1surakarta418" target="_blank" title="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                            <!-- TikTok -->
+                            <a href="https://www.tiktok.com/@officialopbs_man1ska" target="_blank" title="TikTok">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="whatsapp-channel" class="section channel-section" aria-labelledby="channel-title">
+            <div class="container">
+                <div class="channel-card">
+                    <div class="channel-icon" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></div>
+                    <div class="channel-copy">
+                        <p class="channel-kicker">PLAYER UPDATE CHANNEL</p>
+                        <h2 id="channel-title">Never Miss a CRESCENTA Update</h2>
+                        <p>Join our official WhatsApp Channel for registration reminders, competition news, and event announcements.</p>
+                    </div>
+                    <a class="channel-button" href="https://whatsapp.com/channel/0029Vb8fw8V8aKvDAL3Z5z3q" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                        Join Channel
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column footer-brand">
+                    <div class="footer-logo">CRESCENTA <span>2026</span></div>
+                    <p class="footer-tagline">Empowering Scientific Innovation and Technology as Catalysts for Transformative Civilization</p>
+                    <div class="footer-social">
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/officialopbs_man1ska/" target="_blank" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@officialopbsman1surakarta418" target="_blank" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <!-- TikTok -->
+                        <a href="https://www.tiktok.com/@officialopbs_man1ska" target="_blank" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column footer-links">
+                    <h3 class="footer-title">Competitions</h3>
+                    <ul>
+                        <li><a href="#competitions">Mathematics Olympiad</a></li>
+                        <li><a href="#competitions">Science Olympiad</a></li>
+                        <li><a href="#competitions">Quiz Bowl (LCC)</a></li>
+                        <li><a href="#competitions">Robosoccer</a></li>
+                        <li><a href="#competitions">Robot Maze Solving</a></li>
+                        <li><a href="#competitions">Innovation Project</a></li>
+                        <li><a href="#competitions">Scientific Essay</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column footer-links">
+                    <h3 class="footer-title">Explore</h3>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#timeline">Timeline</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#sponsors">Sponsors</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column footer-contact">
+                    <h3 class="footer-title">Get In Touch</h3>
+                    <p class="footer-contact-item"><span>📧</span> redaksiopbs1@gmail.com</p>
+                    <p class="footer-contact-item"><span>📱</span> +62 859-4748-6109</p>
+                    <p class="footer-contact-item"><span>📍</span> MAN 1 Surakarta, Jawa Tengah, Indonesia</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 CRESCENTA. All Rights Reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#faq">Terms</a>
+                        <span class="footer-separator">|</span>
+                        <a href="#faq">Privacy</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Characters -->
+            <div class="footer-characters">
+                <div class="wizard-waving"></div>
+                <div class="moon"></div>
+                <div class="stars"></div>
+                <div class="retro-arcade-machine"></div>
+                <div class="pixel-heart"></div>
+            </div>
+        </footer>
+
+        <!-- Audio Element for Interactive Sounds -->
+        <audio id="hover-sound" preload="auto">
+            <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=" type="audio/wav">
+        </audio>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42"></script>
+    <script src="script.js"></script>
+</body>
+</html>
